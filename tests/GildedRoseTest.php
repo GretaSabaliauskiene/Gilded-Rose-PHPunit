@@ -1,7 +1,18 @@
 <?php
 require __DIR__ . "/../src/GildedRose.php";
 
-use GildedRose;
+require __DIR__ . "/../src/Item.php";
+require __DIR__ . "/../src/Sulfuras.php";
+require __DIR__ . "/../src/AgedBrie.php";
+require __DIR__ . "/../src/BackStage.php";
+
+
+
+
+
+
+
+use App\GildedRose;
 use PHPUnit\Framework\TestCase;
 
 class GildedRoseTest extends TestCase
