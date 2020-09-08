@@ -19,6 +19,9 @@ class GildedRose
 
             case 'Backstage passes to a TAFKAL80ETC concert':
                 return new Backstage($quality, $sellIn);
+
+            case 'Conjured Mana Cake':
+                return new Conjured($quality, $sellIn);
         }
     }
 }
