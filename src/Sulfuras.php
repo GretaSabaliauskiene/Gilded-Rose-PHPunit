@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
+namespace GildedRose;
 
-class Sulfuras extends Item
+class Sulfuras extends ItemExtended
 {
     public function tick()
     {

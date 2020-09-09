@@ -1,6 +1,11 @@
 <?php
+
+namespace GildedRose;
+
+
 require __DIR__ . "/../src/GildedRose.php";
 require __DIR__ . "/../src/Item.php";
+require __DIR__ . "/../src/ItemExtended.php";
 require __DIR__ . "/../src/Sulfuras.php";
 require __DIR__ . "/../src/AgedBrie.php";
 require __DIR__ . "/../src/Backstage.php";
@@ -12,8 +17,6 @@ require __DIR__ . "/../src/Conjured.php";
 
 
 
-
-use App\GildedRose;
 use PHPUnit\Framework\TestCase;
 
 class GildedRoseTest extends TestCase
@@ -25,8 +28,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(9, $item->quality);
-        $this->assertEquals(4, $item->sellIn);
+        $this->assertEquals(9, $item->item->quality);
+        $this->assertEquals(4, $item->item->sell_in);
     }
 
     /** @test */
@@ -36,8 +39,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(8, $item->quality);
-        $this->assertEquals(-1, $item->sellIn);
+        $this->assertEquals(8, $item->item->quality);
+        $this->assertEquals(-1, $item->item->sell_in);
     }
 
     /** @test */
@@ -47,8 +50,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(8, $item->quality);
-        $this->assertEquals(-6, $item->sellIn);
+        $this->assertEquals(8, $item->item->quality);
+        $this->assertEquals(-6, $item->item->sell_in);
     }
 
     /** @test */
@@ -58,8 +61,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(0, $item->quality);
-        $this->assertEquals(4, $item->sellIn);
+        $this->assertEquals(0, $item->item->quality);
+        $this->assertEquals(4, $item->item->sell_in);
     }
 
     /** @test */
@@ -69,8 +72,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(11, $item->quality);
-        $this->assertEquals(4, $item->sellIn);
+        $this->assertEquals(11, $item->item->quality);
+        $this->assertEquals(4, $item->item->sell_in);
     }
 
     /** @test */
@@ -80,8 +83,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(50, $item->quality);
-        $this->assertEquals(4, $item->sellIn);
+        $this->assertEquals(50, $item->item->quality);
+        $this->assertEquals(4, $item->item->sell_in);
     }
 
     /** @test */
@@ -91,8 +94,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(12, $item->quality);
-        $this->assertEquals(-1, $item->sellIn);
+        $this->assertEquals(12, $item->item->quality);
+        $this->assertEquals(-1, $item->item->sell_in);
     }
 
     /** @test */
@@ -102,8 +105,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(50, $item->quality);
-        $this->assertEquals(-1, $item->sellIn);
+        $this->assertEquals(50, $item->item->quality);
+        $this->assertEquals(-1, $item->item->sell_in);
     }
 
     /** @test */
@@ -113,8 +116,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(50, $item->quality);
-        $this->assertEquals(-1, $item->sellIn);
+        $this->assertEquals(50, $item->item->quality);
+        $this->assertEquals(-1, $item->item->sell_in);
     }
 
     /** @test */
@@ -124,8 +127,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(12, $item->quality);
-        $this->assertEquals(-11, $item->sellIn);
+        $this->assertEquals(12, $item->item->quality);
+        $this->assertEquals(-11, $item->item->sell_in);
     }
 
     /** @test */
@@ -135,8 +138,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(50, $item->quality);
-        $this->assertEquals(-11, $item->sellIn);
+        $this->assertEquals(50, $item->item->quality);
+        $this->assertEquals(-11, $item->item->sell_in);
     }
 
     /** @test */
@@ -146,8 +149,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(10, $item->quality);
-        $this->assertEquals(5, $item->sellIn);
+        $this->assertEquals(10, $item->item->quality);
+        $this->assertEquals(5, $item->item->sell_in);
     }
 
     /** @test */
@@ -157,8 +160,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(10, $item->quality);
-        $this->assertEquals(5, $item->sellIn);
+        $this->assertEquals(10, $item->item->quality);
+        $this->assertEquals(5, $item->item->sell_in);
     }
 
     /** @test */
@@ -168,12 +171,12 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(10, $item->quality);
-        $this->assertEquals(-1, $item->sellIn);
+        $this->assertEquals(10, $item->item->quality);
+        $this->assertEquals(-1, $item->item->sell_in);
     }
 
     /*
-        "Backstage passes", like aged brie, increases in Quality as it's SellIn
+        "Backstage passes", like aged brie, increases in Quality as it's sell_in
         value approaches; Quality increases by 2 when there are 10 days or
         less and by 3 when there are 5 days or less but Quality drops to
         0 after the concert
@@ -190,8 +193,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(11, $item->quality);
-        $this->assertEquals(10, $item->sellIn);
+        $this->assertEquals(11, $item->item->quality);
+        $this->assertEquals(10, $item->item->sell_in);
     }
 
     /** @test */
@@ -205,8 +208,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(12, $item->quality);
-        $this->assertEquals(9, $item->sellIn);
+        $this->assertEquals(12, $item->item->quality);
+        $this->assertEquals(9, $item->item->sell_in);
     }
 
     /** @test */
@@ -220,8 +223,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(50, $item->quality);
-        $this->assertEquals(9, $item->sellIn);
+        $this->assertEquals(50, $item->item->quality);
+        $this->assertEquals(9, $item->item->sell_in);
     }
 
     /** @test */
@@ -235,8 +238,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(13, $item->quality);
-        $this->assertEquals(4, $item->sellIn);
+        $this->assertEquals(13, $item->item->quality);
+        $this->assertEquals(4, $item->item->sell_in);
     }
 
     /** @test */
@@ -250,8 +253,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(50, $item->quality);
-        $this->assertEquals(4, $item->sellIn);
+        $this->assertEquals(50, $item->item->quality);
+        $this->assertEquals(4, $item->item->sell_in);
     }
 
     /** @test */
@@ -265,8 +268,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(13, $item->quality);
-        $this->assertEquals(0, $item->sellIn);
+        $this->assertEquals(13, $item->item->quality);
+        $this->assertEquals(0, $item->item->sell_in);
     }
 
     /** @test */
@@ -280,8 +283,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(50, $item->quality);
-        $this->assertEquals(0, $item->sellIn);
+        $this->assertEquals(50, $item->item->quality);
+        $this->assertEquals(0, $item->item->sell_in);
     }
 
     /** @test */
@@ -295,8 +298,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(0, $item->quality);
-        $this->assertEquals(-1, $item->sellIn);
+        $this->assertEquals(0, $item->item->quality);
+        $this->assertEquals(-1, $item->item->sell_in);
     }
 
     /** @test */
@@ -310,8 +313,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(0, $item->quality);
-        $this->assertEquals(-2, $item->sellIn);
+        $this->assertEquals(0, $item->item->quality);
+        $this->assertEquals(-2, $item->item->sell_in);
     }
 
     /** @test */
@@ -321,8 +324,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(8, $item->quality);
-        $this->assertEquals(9, $item->sellIn);
+        $this->assertEquals(8, $item->item->quality);
+        $this->assertEquals(9, $item->item->sell_in);
     }
 
     /** @test */
@@ -332,8 +335,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(0, $item->quality);
-        $this->assertEquals(9, $item->sellIn);
+        $this->assertEquals(0, $item->item->quality);
+        $this->assertEquals(9, $item->item->sell_in);
     }
 
     /** @test */
@@ -343,8 +346,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(6, $item->quality);
-        $this->assertEquals(-1, $item->sellIn);
+        $this->assertEquals(6, $item->item->quality);
+        $this->assertEquals(-1, $item->item->sell_in);
     }
 
     /** @test */
@@ -354,8 +357,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(0, $item->quality);
-        $this->assertEquals(-1, $item->sellIn);
+        $this->assertEquals(0, $item->item->quality);
+        $this->assertEquals(-1, $item->item->sell_in);
     }
 
     /** @test */
@@ -365,8 +368,8 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(6, $item->quality);
-        $this->assertEquals(-11, $item->sellIn);
+        $this->assertEquals(6, $item->item->quality);
+        $this->assertEquals(-11, $item->item->sell_in);
     }
 
     /** @test */
@@ -376,7 +379,7 @@ class GildedRoseTest extends TestCase
 
         $item->tick();
 
-        $this->assertEquals(0, $item->quality);
-        $this->assertEquals(-11, $item->sellIn);
+        $this->assertEquals(0, $item->item->quality);
+        $this->assertEquals(-11, $item->item->sell_in);
     }
 }

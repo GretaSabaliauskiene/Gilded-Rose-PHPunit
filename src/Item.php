@@ -1,33 +1,35 @@
 <?php
 
-namespace App;
+declare(strict_types=1);
 
+namespace GildedRose;
 
-class Item
+final class Item
 {
+    /**
+     * @var string
+     */
+    public $name;
 
-    public $sellIn;
+    /**
+     * @var int
+     */
+    public $sell_in;
 
+    /**
+     * @var int
+     */
     public $quality;
 
-
-    public function __construct($quality, $sell_in)
+    public function __construct(string $name, int $sell_in, int $quality)
     {
+        $this->name = $name;
+        $this->sell_in = $sell_in;
         $this->quality = $quality;
-        $this->sellIn = $sell_in;
     }
 
-    public function tick()
+    public function __toString(): string
     {
-        $this->sellIn -= 1;
-
-        if ($this->quality <= 0) {
-            return;
-        }
-        $this->quality -= 1;
-
-        if ($this->sellIn <= 0 && $this->quality > 0) {
-            $this->quality -= 1;
-        }
+        return "{$this->name}, {$this->sell_in}, {$this->quality}";
     }
 }

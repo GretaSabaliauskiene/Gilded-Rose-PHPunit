@@ -1,27 +1,27 @@
 <?php
 
-namespace App;
+namespace GildedRose;
 
 class GildedRose
 {
-    public static function of($name, $quality, $sellIn)
+    public static function of($name, $quality, $sell_in)
     {
         switch ($name) {
 
             case 'normal':
-                return new Item($quality, $sellIn);
+                return new ItemExtended($name, $sell_in, $quality);
 
             case 'Aged Brie':
-                return new AgedBrie($quality, $sellIn);
+                return new AgedBrie($name, $sell_in, $quality);
 
             case 'Sulfuras, Hand of Ragnaros':
-                return new Sulfuras($quality, $sellIn);
+                return new Sulfuras($name, $sell_in, $quality);
 
             case 'Backstage passes to a TAFKAL80ETC concert':
-                return new Backstage($quality, $sellIn);
+                return new Backstage($name, $sell_in, $quality);
 
             case 'Conjured Mana Cake':
-                return new Conjured($quality, $sellIn);
+                return new Conjured($name, $sell_in, $quality);
         }
     }
 }

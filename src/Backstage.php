@@ -1,30 +1,30 @@
 <?php
 
-namespace App;
+namespace GildedRose;
 
 
-class Backstage extends Item
+class Backstage extends ItemExtended
 {
     public function tick()
     {
-        $this->quality += 1;
+        $this->item->quality += 1;
 
-        if ($this->sellIn <= 10) {
-            $this->quality += 1;
+        if ($this->item->sell_in <= 10) {
+            $this->item->quality += 1;
         }
 
-        if ($this->sellIn <= 5) {
-            $this->quality += 1;
+        if ($this->item->sell_in <= 5) {
+            $this->item->quality += 1;
         }
 
-        if ($this->sellIn <= 0) {
-            $this->quality = 0;
+        if ($this->item->sell_in <= 0) {
+            $this->item->quality = 0;
         }
 
-        if ($this->quality > 50) {
-            $this->quality = 50;
+        if ($this->item->quality > 50) {
+            $this->item->quality = 50;
         }
 
-        $this->sellIn -= 1;
+        $this->item->sell_in -= 1;
     }
 }
